@@ -8,7 +8,7 @@ Descripción del ejercicio: Sumar los números en un array.
 
 ### Código
 
-\```javascript
+```javascript
 function sumArray(userNum) {
     let resultSumArray = 0
     const arrayNum = []
@@ -26,6 +26,6 @@ function sumArray(userNum) {
 }
 
 sumArray(10)
-\```
+```
 
 El resultado esperado debe ser: 55
