@@ -90,4 +90,40 @@ function compareTriplets(a, b) {
 
 compareTriplets([17, 28, 30], [99, 16, 8])
 ```
-`El array de puntuación es: [2,1]`
+`El esperado debe ser: [2,1]`
+
+### Código final en HackerRank
+
+```javascript
+function compareTriplets(a, b) {
+    const points = [0, 0]
+    
+    for(let i=0; i<a.length; i++) {
+        
+        if(a[i] < b[i]) {
+            points[1] += 1
+        } else if(a[i] > b[i]){
+            points[0] += 1
+        } 
+    }
+    
+    return points
+}
+```
+
+## Ejercicio 4: A very big sum
+Descripción: Calcular e imprimir la suma de elementos en un array
+
+### Código final en HackerRank
+```javascript
+function aVeryBigSum(ar) {
+
+    let sum = 0
+
+    for (let i = 0; i < ar.length; i++) {
+        sum += ar[i]
+    }
+
+    return sum
+}
+```
