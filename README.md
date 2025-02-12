@@ -277,3 +277,138 @@ function staircase(n) {
     }
 }
 ```
+
+## Ejercicio 8: Mini-Max Sum
+Descripción: Dados cinco números enteros positivos, encuentre los valores mínimo y máximo que se pueden calcular sumando exactamente cuatro de los cinco números enteros. Luego imprima los valores mínimo y máximo respectivos como una sola línea de dos enteros largos separados por espacios.
+
+### Código desarrollado en VScode
+```javascript
+function miniMaxSum(arr) {
+
+    let sumElements = 0
+    const resultArray = []
+
+    //este for suma todos los indices del array
+    for (let i = 0; i < arr.length; i++) {
+        sumElements += arr[i]
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        //para crear el array con la suma de cada conjunto de indices tome la suma total de todos los elementos en el array y le voy restando cada indice. 15-1=14, 15-2=13, 15-3=12 ...
+        resultArray.push(sumElements - arr[i])
+    }
+
+    //este console log muestra el resultado de las sumas de cada conjunto de indices 2+3+4+5=14, 1+3+4+5=13, 1+2+4+5=12, 1+2+3+5=11, 1+2+3+4=10
+    console.log(resultArray)
+    let max = resultArray[0]
+    let min = resultArray[0]
+
+    for (let i = 0; i < resultArray.length; i++) {
+        //esta condicional busca en el array de los resultados el indice mayor o menor para luego agregarlo a la variable correspondiente.
+        if (resultArray[i] > max) {
+            max = resultArray[i]
+        } else if (resultArray[i] < min) {
+            min = resultArray[i]
+        }
+    }
+
+    console.log(min, max)
+
+    //Math.max y Math.min es otra forma mas sencilla de hallar el numero mayor o menor en un array. Los ... es un spread
+    let maxMath = Math.max(...resultArray)
+    let minMath = Math.min(...resultArray)
+
+    console.log(minMath, maxMath)
+}
+
+miniMaxSum([1, 2, 3, 4, 5])
+```
+`El resultado esperado debe ser: 10 14`
+
+### Código final en HackerRank
+```javascript
+function miniMaxSum(arr) {
+    
+    let sumElements = 0
+    const resultArray = []
+
+    for (let i = 0; i < arr.length; i++) {
+        sumElements += arr[i]
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        resultArray.push(sumElements - arr[i])
+    }
+
+    let max = resultArray[0]
+    let min = resultArray[0]
+
+    for (let i = 0; i < resultArray.length; i++) {
+        if (resultArray[i] > max) {
+            max = resultArray[i]
+        } else if (resultArray[i] < min) {
+            min = resultArray[i]
+        }
+    }
+
+    console.log(min, max)
+}
+```
+
+## Ejercicio 9: Birthday Cake Candles
+Descripción: Estás a cargo del pastel para el cumpleaños de un niño. Tendrá una vela para cada año de su edad total. Sólo podrán soplar las velas más altas. Su tarea es contar cuántas velas son las más altas.
+
+### Código desarrollado en VScode
+```javascript
+function birthdayCakeCandles(candles) {
+
+    /*Para encontrar el numero mayor del array primero creamos la variable.
+    Se le asigna un indice del array para que cumpla su función de comparar
+    en el condicional if*/
+    let maxCandles = candles[0]
+
+    //Con el for iteramos todos los indices del array
+    for (let i = 0; i < candles.length; i++) {
+
+        /*La condicional funciona de la siguiente forma
+        la primera iteración 2 > 2 es false
+        la segunda iteración 3 > 2 es true. Por lo que a la variable maxCandle se le asigna el 3
+        la tercera iteración 1 > 2 es false
+        La cuarta iteración es 3 > 2 es true y hace los mismo que en la segunda iteración.*/
+        if (candles[i] > maxCandles) {
+            maxCandles = candles[i]
+        }
+    }
+
+    //por esto el resultado del console log es 3, ya que es el número mayor del array
+    console.log(`el numero mayor de este array es: ${maxCandles}`)
+
+    //conociendo cual es el numero mayor de nuestro array usamos filter crear un nuevo array con el numero mayor que se repite. 
+    let cantMaxCandles = candles.filter((candle) => candle === maxCandles)
+
+    //finalmente usamos .length para contar la cantidad de veces que se ha repetido el numero mayor en nuestro array candles.
+    console.log(`Dentro del array el numero ${maxCandles} se repite ${cantMaxCandles.length} ${cantMaxCandles.length === 1 ? 'vez' : 'veces'}`)
+}
+
+birthdayCakeCandles([2, 3, 1, 3])
+```
+`El resultado esperado debe ser: 2`
+
+### Código final en HackerRank
+```javascript
+function birthdayCakeCandles(candles) {
+    
+    let maxCandles = candles[0]
+
+    for (let i = 0; i < candles.length; i++) {
+
+        if (candles[i] > maxCandles) {
+            maxCandles = candles[i]
+        }
+    }
+   
+    let cantMaxCandles = candles.filter((candle) => candle === maxCandles)
+    
+    return cantMaxCandles.length
+}
+```
