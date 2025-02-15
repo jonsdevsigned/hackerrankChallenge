@@ -412,3 +412,146 @@ function birthdayCakeCandles(candles) {
     return cantMaxCandles.length
 }
 ```
+
+## Ejercicio 10: Time Conversion
+Descripción: Dada una hora en formato AM/PM, conviértala a hora militar.
+
+### Código desarrollado en VScode
+```javascript
+function timeConversion(s) {
+
+    /* substring es un metodo que devuelve el texto entre los indices especificados. 
+    Si el string es '07:05:45PM' devolvera '07:05:45'*/
+    let hourDeleteAMPM = s.substring(0, 8)
+    /* el metodo split divide el string en un array. 
+    Siendo el string recibido '07:05:45PM' devuelve ['07', '05', '45PM'] */
+    let separateHour = s.split(':')
+    let militaryHour
+
+    /*Este if permite reconocer con include si la hora es AM o PM Revisando el indice 2 de separateHour '45PM'
+    includes revisa si un string contiene la cadena indicada.*/
+    if (separateHour[2].includes('AM')) {
+
+        //El indice 0 '07' es ==== '12'  --  false
+        if (separateHour[0] === '12') {
+            //replace remplaza la parte del string indicada. En este caso si el indice 0 contiene '12' sera remplazado por '00'
+            militaryHour = console.log(hourDeleteAMPM.replace('12', '00'))
+        } else {
+            //si no es el caso anterior entonces se eliminara el AM
+            militaryHour = console.log(hourDeleteAMPM)
+        }
+
+    }
+
+    if (separateHour[2].includes('PM')) {
+
+        if (separateHour[0] === '01') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('01', '13'))
+        } else if (separateHour[0] === '02') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('02', '14'))
+        } else if (separateHour[0] === '03') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('03', '15'))
+        } else if (separateHour[0] === '04') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('04', '16'))
+        } else if (separateHour[0] === '05') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('05', '17'))
+        } else if (separateHour[0] === '06') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('06', '18'))
+        } else if (separateHour[0] === '07') {
+
+            /* en nuestro ejemplo es desde aca que la evaluación del string es true porque el indice 0 contiene '07'
+            entonces el string '07' sera remplazado por '19' dando como resultado '19:05:45' */
+            militaryHour = console.log(hourDeleteAMPM.replace('07', '19'))
+        } else if (separateHour[0] === '08') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('08', '20'))
+        } else if (separateHour[0] === '09') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('09', '21'))
+        } else if (separateHour[0] === '10') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('10', '22'))
+        } else if (separateHour[0] === '11') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('11', '23'))
+        } else if (separateHour[0] === '12') {
+
+            militaryHour = console.log(hourDeleteAMPM.replace('12', '12'))
+        }
+    }
+
+    return militaryHour
+}
+
+timeConversion('07:05:45PM')
+```
+`El resultado esperado debe ser: 19:05:45`
+
+### Código final en HackerRank
+```javascript
+function timeConversion(s) {
+    
+    let hourDeleteAMPM = s.substring(0, 8)
+    let separateHour = s.split(':')
+    let militaryHour
+
+    if (separateHour[2].includes('AM')) {
+
+        if (separateHour[0] === '12') {
+            militaryHour = hourDeleteAMPM.replace('12', '00')
+        } else {
+            militaryHour = hourDeleteAMPM
+        }
+
+    }
+
+    if (separateHour[2].includes('PM')) {
+
+        if (separateHour[0] === '01') {
+
+            militaryHour = hourDeleteAMPM.replace('01', '13')
+        } else if (separateHour[0] === '02') {
+
+            militaryHour = hourDeleteAMPM.replace('02', '14')
+        } else if (separateHour[0] === '03') {
+
+            militaryHour = hourDeleteAMPM.replace('03', '15')
+        } else if (separateHour[0] === '04') {
+
+            militaryHour = hourDeleteAMPM.replace('04', '16')
+        } else if (separateHour[0] === '05') {
+
+            militaryHour = hourDeleteAMPM.replace('05', '17')
+        } else if (separateHour[0] === '06') {
+
+            militaryHour = hourDeleteAMPM.replace('06', '18')
+        } else if (separateHour[0] === '07') {
+
+            militaryHour = hourDeleteAMPM.replace('07', '19')
+        } else if (separateHour[0] === '08') {
+
+            militaryHour = hourDeleteAMPM.replace('08', '20')
+        } else if (separateHour[0] === '09') {
+
+            militaryHour = hourDeleteAMPM.replace('09', '21')
+        } else if (separateHour[0] === '10') {
+
+            militaryHour = hourDeleteAMPM.replace('10', '22')
+        } else if (separateHour[0] === '11') {
+
+            militaryHour = hourDeleteAMPM.replace('11', '23')
+        } else if (separateHour[0] === '12') {
+
+            militaryHour = hourDeleteAMPM.replace('12', '12')
+        }
+    }
+
+    return militaryHour
+}
+```
